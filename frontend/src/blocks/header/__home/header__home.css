@@ -1,0 +1,26 @@
+.header__home {
+  width: 100%;
+  max-width: 880px;
+  margin: 0 auto;
+  border-bottom: 1px solid #545454b3;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 45px;
+}
+
+@media screen and (max-width: 950px) {
+  .header__home {
+    max-width: 68vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__home {
+    max-width: 260px;
+    padding: 0;
+    border-top: 1px solid #545454b3;
+    border-bottom: 1px solid #545454b3;
+    margin: 140px auto 14px;
+    align-items: center;
+  }
+}

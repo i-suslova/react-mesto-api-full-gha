@@ -1,0 +1,26 @@
+.auth__form-button {
+  width: 358px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  padding: 0;
+  margin: 188px 0 0;
+  cursor: pointer;
+}
+
+.auth__form-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .auth__form-button {
+    width: 260px;
+    height: 46px;
+    font-size: 16px;
+    line-height: 17px;
+    margin: 144px 0 0;
+  }
+}

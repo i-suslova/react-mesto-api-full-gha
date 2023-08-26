@@ -1,0 +1,11 @@
+.element__button-delete {
+  padding: 0;
+  background: transparent url(../../../images/trash.svg) no-repeat center;
+  width: 18px;
+  height: 19px;
+  border-style: transparent;
+  position: absolute;
+  top: 18px;
+  right: 19px;
+  border: hidden;
+}

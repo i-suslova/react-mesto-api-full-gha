@@ -1,0 +1,25 @@
+.auth__form-input {
+  width: 358px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  color: #ccc;
+  display: block;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  margin-bottom: 29px;
+  padding-bottom: 8px;
+}
+
+.auth__form-input::placeholder {
+  color: #c4c4c4;
+}
+
+@media screen and (max-width: 768px) {
+  .auth__form-input {
+    width: 238px;
+  }
+}

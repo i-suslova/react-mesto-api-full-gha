@@ -1,0 +1,16 @@
+.header__link-exit {
+  display: block;
+  padding-left: 22px;
+  color: #a9a9a9;
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .header__link-exit {
+    max-width: 320px;
+    padding: 0;
+  }
+}

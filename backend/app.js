@@ -3,14 +3,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const routes = require('./routes/index');
+
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { DB_ADDRESS } = require('./utils/constants');
 
 const { PORT = 3000 } = process.env;
 
 mongoose
-  .connect('mongodb://localhost:27017/mestodb', {
-    // .connect('mongodb://127.0.0.1:27017/mestodb', {
+  .connect(DB_ADDRESS, {
     useNewUrlParser: true,
   });
 

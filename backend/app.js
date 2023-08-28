@@ -2,8 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
-const routes = require('./routes/index');
+const cors = require('cors');
 
+const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { DB_ADDRESS } = require('./utils/constants');
@@ -16,7 +17,7 @@ mongoose
   });
 
 const app = express();
-
+app.use(cors());
 // для собирания JSON-формата
 app.use(express.json());
 // для обработки данных, отправленных через формы HTML

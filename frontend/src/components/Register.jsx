@@ -11,7 +11,7 @@ function Register(props) {
 
   React.useEffect(() => {
     if (props.loggedIn) {
-      navigate("/sign-up");
+      navigate("/signup");
     }
   }, [props.loggedIn, navigate]);
 
@@ -47,7 +47,7 @@ function Register(props) {
           Зарегистрироваться
         </button>
 
-        <Link to="/sign-in" className="auth__form-help hover">
+        <Link to="/signin" className="auth__form-help hover">
           Уже зарегистрированы? Войти
         </Link>
       </form>

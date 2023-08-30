@@ -53,7 +53,9 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  baseUrl: "https://auth.nomoreparties.co",
+  // baseUrl: "https://auth.nomoreparties.co",
+   baseUrl: "https://api.isus.nomoredomainsicu.ru",
+
   headers: {
     "Content-Type": "application/json",
   },

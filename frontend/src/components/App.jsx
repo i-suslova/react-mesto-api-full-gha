@@ -100,7 +100,7 @@ function App() {
       })
       .finally(() => {
         setIsInfoTooltipOpen(true);
-        navigate("/sign-in");
+        navigate("/signin");
       });
   };
 
@@ -219,7 +219,7 @@ function App() {
     setIsLoggedIn(false);
     setUserEmail("");
 
-    navigate("/sign-in");
+    navigate("/signin");
   }
 
   //универсальная функция, которая принимает функцию запроса
@@ -247,9 +247,9 @@ function App() {
           />
 
           <Routes>
-            <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
+            <Route path="/signin" element={<Login onLogin={handleLogin} />} />
             <Route
-              path="/sign-up"
+              path="/signup"
               element={<Register onRegistration={handleRegister} />}
             />
             <Route
@@ -268,7 +268,7 @@ function App() {
                 />
               }
             />
-            <Route path="*" element={<Navigate to="/sign-in" replace />} />
+            <Route path="*" element={<Navigate to="/signin" replace />} />
           </Routes>
 
           <Footer />

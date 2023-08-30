@@ -110,10 +110,15 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-66",
+  // baseUrl: "https://mesto.nomoreparties.co/v1/cohort-66",
+  baseUrl: "https://api.isus.nomoredomainsicu.ru",
+  // baseUrl: 'http://localhost:3001',
+  // headers: {
+  //   authorization: "a6201408-149a-4017-8f2e-d2f94e8d9514",
+  //   "Content-Type": "application/json",
+  // },
   headers: {
-    authorization: "a6201408-149a-4017-8f2e-d2f94e8d9514",
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 

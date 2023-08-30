@@ -14,15 +14,15 @@ function Header(props) {
   let headerText;
   let headerLink;
 
-  if (pathName === "/sign-in") {
+  if (pathName === "/signin") {
     headerText = "Регистрация";
-    headerLink = "/sign-up";
-  } else if (pathName === "/sign-up") {
+    headerLink = "/signup";
+  } else if (pathName === "/signup") {
     headerText = "Войти";
-    headerLink = "/sign-in";
+    headerLink = "/signin";
   } else {
     headerText = props.loggedIn ? "Регистрация" : "Войти";
-    headerLink = props.loggedIn ? "/sign-up" : "/sign-in";
+    headerLink = props.loggedIn ? "/signup" : "/signin";
   }
 
   return (

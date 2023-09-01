@@ -15,7 +15,7 @@ class ApiAuth {
       this._correctServerResponse
     );
   }
-
+ 
   // запрос для регистрации
   signup({ email, password }) {
     return this._request("signup", {
@@ -54,9 +54,9 @@ class ApiAuth {
 
 const apiAuth = new ApiAuth({
   // baseUrl: "https://auth.nomoreparties.co",
-   baseUrl: "https://api.isus.nomoredomainsicu.ru",
-
-  headers: {
+  //  baseUrl: "https://api.isus.nomoredomainsicu.ru",
+   baseUrl: 'http://localhost:3001',
+   headers: {
     "Content-Type": "application/json",
   },
 });

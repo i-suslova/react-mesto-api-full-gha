@@ -60,7 +60,7 @@ module.exports.getUserInfo = (req, res, next) => {
   User.findById(_id)
     .orFail()
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
 
     .catch((err) => {
@@ -78,7 +78,7 @@ module.exports.getUserById = (req, res, next) => {
 
   User.findById(userId)
     .orFail()
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
 
     .catch((err) => {
       if (err instanceof mongoose.Error.DocumentNotFoundError) {
@@ -96,7 +96,7 @@ module.exports.updateUser = (req, res, next) => {
   User.findByIdAndUpdate(req.user._id, { name, about }, { new: true })
     .orFail(new NotFoundError('Пользователь не найден'))
     .then((user) => {
-      res.send({ data: user });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
@@ -113,7 +113,7 @@ module.exports.updateAvatar = (req, res, next) => {
 
   User.findByIdAndUpdate(req.user._id, { avatar }, { new: true })
     .orFail(new NotFoundError('Пользователь не найден'))
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestError('Некорректные данные пользователя.'));
@@ -126,6 +126,6 @@ module.exports.updateAvatar = (req, res, next) => {
 // получаем всех пользователей
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };

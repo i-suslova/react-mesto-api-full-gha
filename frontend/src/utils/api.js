@@ -4,6 +4,11 @@ class Api {
     this._headers = options.headers;
   }
 
+  // настраиваем авторизацию
+  setAuthorization(token){
+    this._headers['authorization'] = `Bearer ${token}`;
+  }
+
   // проверяем ответ сервера на корректность
   _correctServerResponse(res) {
     if (res.ok) {
@@ -62,13 +67,11 @@ class Api {
   }
 
   // отправка данных для изменения аватара (PATCH)
-  editAvatar(data) {
+  editAvatar(avatar) {
     return this._request("users/me/avatar", {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        avatar: data.avatar,
-      }),
+      body: JSON.stringify(avatar),
     });
   }
 
@@ -94,7 +97,7 @@ class Api {
 
   // поставить лайк (PUT)
   addLike(cardId) {
-    return this._request(`cards/${cardId}/likes`, {
+      return this._request(`cards/likes/${cardId}`, {
       method: "PUT",
       headers: this._headers,
     });
@@ -102,7 +105,7 @@ class Api {
 
   // удалить лайк (DELETE)
   deleteLike(cardId) {
-    return this._request(`cards/${cardId}/likes`, {
+      return this._request(`cards/likes/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     });
@@ -110,15 +113,11 @@ class Api {
 }
 
 const api = new Api({
-  // baseUrl: "https://mesto.nomoreparties.co/v1/cohort-66",
-  baseUrl: "https://api.isus.nomoredomainsicu.ru",
-  // baseUrl: 'http://localhost:3001',
-  // headers: {
-  //   authorization: "a6201408-149a-4017-8f2e-d2f94e8d9514",
-  //   "Content-Type": "application/json",
-  // },
+  baseUrl: 'http://localhost:3001',
+   // baseUrl: "https://api.isus.nomoredomainsicu.ru",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
+    authorization: ``, 
   },
 });
 

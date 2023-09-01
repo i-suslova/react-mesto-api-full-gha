@@ -1,5 +1,5 @@
 import React from "react";
-import { useState} from "react";
+import { useState } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import ProtectedRoute from "./ProtectedRoute";
@@ -50,48 +50,34 @@ function App() {
   const [isRegistrationStatus, setIsRegistrationStatus] = useState(false);
   //отслеживанем данные входа
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //отслеживаем авторизацию
+  const [tokenChecked, setTokenChecked] = useState(false);
 
-  React.useEffect(() => {
-    const checkToken = async () => {
-      if (!localStorage.getItem("JWT")) {
-        return;
-      }
-
-      try {
-        const res = await apiAuth.getToken(localStorage.getItem("JWT"));
-        if (res.data) {
-          setUserEmail(res.data.email);
-          setIsLoggedIn(true);
-          navigate("/");
-        }
-      } catch (err) {
-        setIsLoggedIn(false);
-        console.log(err);
-      }
-    };
-    checkToken();
-  }, [navigate]);
-
+  const getAllData = async (setAuthorization) => {
+    try {
+      setAuthorization(localStorage.getItem("JWT"));
+      const { userData, cardData } = await api.getAllNeedData();
+      setCurrentUser(userData);
+      setCards(cardData.reverse());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
   React.useEffect(() => {
     if (!isLoggedIn) return;
-    const getAllData = async () => {
-      try {
-        const data = await api.getAllNeedData();
-        setCurrentUser(data.userData);
-        setCards(data.cardData);
-      } catch (error) {
-        console.error(error);
-      }
+    const setAuthorization = (token) => {
+      api.setAuthorization(token);
     };
-
-    getAllData();
+  
+    getAllData(setAuthorization);
   }, [isLoggedIn]);
-
+  
   const handleRegister = (email, password) => {
     apiAuth
       .signup({ email, password })
       .then((res) => {
-        setUserEmail(res.data.email);
+        setUserEmail(res.email);
         setIsRegistrationStatus(true);
       })
       .catch((error) => {
@@ -107,19 +93,55 @@ function App() {
   const handleLogin = (email, password) => {
     apiAuth
       .signin({ email, password })
-      .then((res) => {
-        setIsLoggedIn(true);
+        .then((res) => {
         localStorage.setItem("JWT", res.token);
+        api.setAuthorization(res.token);
+        setUserEmail(email);
+        setIsLoggedIn(true);
         navigate("/");
       })
       .catch((error) => {
         console.error(error);
-
         setIsRegistrationStatus(false);
         setIsInfoTooltipOpen(true);
       });
   };
+ 
+    //удаляем JWT токен из локального хранилища браузера
+    function handleSignOut() {
+      localStorage.removeItem("JWT");
+      setIsLoggedIn(false);
+      setUserEmail("");
+      api.setAuthorization('');
+      localStorage.removeItem("isLoggedIn");
+      navigate("/signin");
+    }
 
+    React.useEffect(() => {
+      const checkToken = async () => {
+
+        if (!localStorage.getItem("JWT") || tokenChecked) {
+          return;
+        }
+    
+        try {
+          const res = await apiAuth.getToken(localStorage.getItem("JWT"));
+          if (res) {
+            setUserEmail(res.email);
+            setIsLoggedIn(true);
+            navigate('/', { replace: true });
+          }
+        } catch (err) {
+          setIsLoggedIn(false);
+          console.log(err);
+        } finally {
+          setTokenChecked(true);
+        }
+      };
+      checkToken();
+    }, [navigate, tokenChecked]);
+    
+  
   //обработчики событий открытия попапов
   const handleEditProfileClick = () => {
     setIsEditProfilePopupOpen(true);
@@ -160,7 +182,7 @@ function App() {
   }
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
 
     if (isLiked) {
       api
@@ -211,15 +233,6 @@ function App() {
         setCards([newCard, ...cards]);
       });
     });
-  }
-
-  //удаляем JWT токен из локального хранилища браузера
-  function handleSignOut() {
-    localStorage.removeItem("JWT");
-    setIsLoggedIn(false);
-    setUserEmail("");
-
-    navigate("/signin");
   }
 
   //универсальная функция, которая принимает функцию запроса

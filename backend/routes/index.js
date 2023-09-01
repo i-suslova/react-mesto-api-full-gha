@@ -12,7 +12,7 @@ const authRouter = require('./auth');
 // ограничения запросов (100 запросов в час)
 const limiter = rateLimit({
   windowMs: 60 * 60 * 1000,
-  max: 100,
+  max: 1000,
   message: 'Слишком много запросов с вашего IP, пожалуйста, попробуйте позже.',
 });
 

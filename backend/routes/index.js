@@ -7,12 +7,12 @@ const { NotFoundError, RateLimitError } = require('../utils/errors/indexErrors')
 
 const usersRouter = require('./users');
 const cardsRouter = require('./cards');
-// crash-test
-router.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
+// // crash-test
+// router.get('/crash-test', () => {
+//   setTimeout(() => {
+//     throw new Error('Сервер сейчас упадёт');
+//   }, 0);
+// });
 const authRouter = require('./auth');
 
 // ограничения запросов (100 запросов в час)

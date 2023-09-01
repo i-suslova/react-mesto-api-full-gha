@@ -7,9 +7,8 @@ const cors = require('cors');
 const routes = require('./routes/index');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { DB_ADDRESS } = require('./utils/constants');
 
-const { PORT = 3000 } = process.env;
+const { PORT, DB_ADDRESS } = process.env;
 
 mongoose
   .connect(DB_ADDRESS, {
@@ -25,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // подключаем логгер запросов
 app.use(requestLogger);
+
 // подключаем роуты
 app.use(routes);
 // подключаем логгер ошибок

@@ -15,4 +15,3 @@ Frontend **_https://isus.nomoredomainsicu.ru_**
 
 Backend **_https://api.isus.nomoredomainsicu.ru_**
  
-  сделанная при прохождении обучения в **_https://practicum.yandex.ru/web/_**

@@ -53,12 +53,11 @@ class ApiAuth {
 }
 
 const apiAuth = new ApiAuth({
-  // baseUrl: "https://auth.nomoreparties.co",
-  //  baseUrl: "https://api.isus.nomoredomainsicu.ru",
-   baseUrl: 'http://localhost:3001',
+   baseUrl: "https://api.isus.nomoredomainsicu.ru",
+  //  baseUrl: 'http://localhost:3001',
    headers: {
     "Content-Type": "application/json",
   },
-});
+})
 
 export default apiAuth;

@@ -5,12 +5,14 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: **_https://i-suslova.github.io/react-mesto-api-full-gha/_**
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.121.51
 
-Frontend https://...
+Frontend **_https://isus.nomoredomainsicu.ru_**
 
-Backend https://...
+Backend **_https://api.isus.nomoredomainsicu.ru_**
+ 
+  сделанная при прохождении обучения в **_https://practicum.yandex.ru/web/_**

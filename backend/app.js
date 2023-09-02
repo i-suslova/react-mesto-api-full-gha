@@ -9,7 +9,6 @@ const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT, DB_ADDRESS } = process.env;
-
 mongoose
   .connect(DB_ADDRESS, {
     useNewUrlParser: true,

@@ -7,18 +7,12 @@ const { NotFoundError, RateLimitError } = require('../utils/errors/indexErrors')
 
 const usersRouter = require('./users');
 const cardsRouter = require('./cards');
-// // crash-test
-// router.get('/crash-test', () => {
-//   setTimeout(() => {
-//     throw new Error('Сервер сейчас упадёт');
-//   }, 0);
-// });
 const authRouter = require('./auth');
 
 // ограничения запросов (100 запросов в час)
 const limiter = rateLimit({
-  windowMs: 60 * 60 * 1000,
-  max: 100,
+  windowMs: 60 * 60 * 100,
+  max: 500,
   message: 'Слишком много запросов с вашего IP, пожалуйста, попробуйте позже.',
 });
 
@@ -26,7 +20,13 @@ router.use(limiter);
 
 router.use('/users', usersRouter);
 router.use('/cards', cardsRouter);
-// используем модуль для аутентификации
+
+// crash-test
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 router.use('/', authRouter);
 
 router.use((err, req, res, next) => {

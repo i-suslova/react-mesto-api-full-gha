@@ -54,6 +54,7 @@ class ApiAuth {
 
 const apiAuth = new ApiAuth({
    baseUrl: "https://api.isus.nomoredomainsicu.ru",
+  //  baseUrl: 'http://localhost:3001',
    headers: {
     "Content-Type": "application/json",
   },

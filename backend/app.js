@@ -24,6 +24,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // подключаем логгер запросов
 app.use(requestLogger);
+
+// crash-test
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 // подключаем роуты
 app.use(routes);
 // подключаем логгер ошибок

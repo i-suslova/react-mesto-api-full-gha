@@ -113,8 +113,7 @@ class Api {
 }
 
 const api = new Api({
-  //  baseUrl: "https://api.isus.nomoredomainsicu.ru",
-   baseUrl: 'http://localhost:3001',
+   baseUrl: "https://api.isus.nomoredomainsicu.ru", 
   headers: {
     "Content-Type": "application/json",
     authorization: ``, 

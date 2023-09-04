@@ -18,9 +18,6 @@ const limiter = rateLimit({
 
 router.use(limiter);
 
-router.use('/users', usersRouter);
-router.use('/cards', cardsRouter);
-
 // crash-test
 router.get('/crash-test', () => {
   setTimeout(() => {
@@ -28,6 +25,9 @@ router.get('/crash-test', () => {
   }, 0);
 });
 router.use('/', authRouter);
+
+router.use('/users', usersRouter);
+router.use('/cards', cardsRouter);
 
 router.use((err, req, res, next) => {
   if (err instanceof RateLimitError) {

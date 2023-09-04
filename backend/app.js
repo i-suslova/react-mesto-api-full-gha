@@ -1,5 +1,4 @@
 require('dotenv').config();
-// const dot = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
@@ -11,7 +10,6 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const PORT = process.env.PORT || 3000;
 const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://127.0.0.1:27017/mestodb';
-// dot.config();
 
 mongoose
   .connect(MONGODB_URL, {

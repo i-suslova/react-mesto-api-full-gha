@@ -97,7 +97,7 @@ class Api {
 
   // поставить лайк (PUT)
   addLike(cardId) {
-      return this._request(`cards/likes/${cardId}`, {
+      return this._request(`cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
     });
@@ -105,7 +105,7 @@ class Api {
 
   // удалить лайк (DELETE)
   deleteLike(cardId) {
-      return this._request(`cards/likes/${cardId}`, {
+      return this._request(`cards//${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
     });

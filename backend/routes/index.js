@@ -18,8 +18,13 @@ const limiter = rateLimit({
 
 router.use(limiter);
 
+// crash-test
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 router.use('/', authRouter);
-
 router.use('/users', usersRouter);
 router.use('/cards', cardsRouter);
 

@@ -23,9 +23,9 @@ router.post('/', authUser, createCarddValidator, createCard);
 router.delete('/:cardId', authUser, deleteCardValidator, deleteCard);
 
 // Роут для постановки лайка карточке
-router.put('/likes/:cardId', authUser, likeDislikeValidator, likeCard);
+router.put('/:cardId/likes', authUser, likeDislikeValidator, likeCard);
 
 // Роут для удаления лайка с карточки
-router.delete('/likes/:cardId', authUser, likeDislikeValidator, dislikeCard);
+router.delete('/:cardId/likes', authUser, likeDislikeValidator, dislikeCard);
 
 module.exports = router;

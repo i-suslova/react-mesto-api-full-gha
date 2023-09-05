@@ -10,9 +10,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.120.156
+IP адрес 158.160.120.156
 
 Frontend **_https://isus.nomoredomainsicu.ru_**
 
 Backend **_https://api.isus.nomoredomainsicu.ru_**
- 
